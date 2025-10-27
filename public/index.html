@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Menu Planner</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="header-content">
+          <div class="header-title">
+            <h1>Chef de Semaine</h1>
+            <p>Planifiez vos repas du midi et du soir avec une interface inspirée d’iOS.</p>
+          </div>
+          <div class="quick-actions">
+            <button id="open-add-recipe" class="action-button">Ajouter une recette</button>
+            <button id="generate-shopping-list" class="action-button secondary">Générer la liste de courses</button>
+          </div>
+        </div>
+      </header>
+      <main class="app-main">
+        <section class="panel" id="planner-panel">
+          <div class="panel-header">
+            <h2>Menu de la semaine</h2>
+            <p>Glissez vos recettes dans chaque case pour composer vos repas.</p>
+          </div>
+          <div id="menu-grid" class="menu-grid"></div>
+        </section>
+
+        <section class="panel" id="recipes-panel">
+          <div class="panel-header">
+            <h2>Vos recettes</h2>
+            <p>Recherche, filtres et ajout rapide de nouvelles idées.</p>
+          </div>
+          <div class="toolbar">
+            <div class="field">
+              <label for="search-recipe">Recherche locale</label>
+              <input type="search" id="search-recipe" placeholder="Poulet, pâtes, curry…" />
+            </div>
+            <div class="field">
+              <label for="ingredient-filter">Ingrédients disponibles</label>
+              <input type="text" id="ingredient-filter" placeholder="tomate, riz, tofu" />
+              <small>Nous vous suggérons les recettes qui utilisent ces ingrédients.</small>
+            </div>
+            <div class="field">
+              <label for="calorie-filter">Calories max</label>
+              <input type="number" id="calorie-filter" min="0" placeholder="650" />
+            </div>
+          </div>
+          <ul id="recipe-list" class="recipe-list"></ul>
+        </section>
+
+        <section class="panel" id="discover-panel">
+          <div class="panel-header">
+            <h2>Explorer le web</h2>
+            <p>Trouvez des recettes sur Internet et importez-les dans votre carnet.</p>
+          </div>
+          <form id="discover-form" class="discover-form">
+            <div class="field">
+              <label for="discover-query">Que souhaitez-vous cuisiner ?</label>
+              <input type="search" id="discover-query" placeholder="lasagnes, ramen, salade…" required />
+            </div>
+            <button type="submit" class="action-button">Rechercher</button>
+          </form>
+          <div id="discover-results" class="discover-results"></div>
+        </section>
+
+        <section class="panel" id="add-recipe-panel">
+          <div class="panel-header">
+            <h2>Ajouter une recette</h2>
+            <p>Enregistrez vos propres créations pour les réutiliser facilement.</p>
+          </div>
+          <form id="add-recipe-form" class="recipe-form">
+            <div class="field">
+              <label for="recipe-title">Titre</label>
+              <input type="text" id="recipe-title" name="recipe-title" required />
+            </div>
+            <div class="field">
+              <label for="recipe-description">Description</label>
+              <input type="text" id="recipe-description" name="recipe-description" placeholder="Une phrase pour donner envie." />
+            </div>
+            <div class="field">
+              <label for="recipe-ingredients">Ingrédients (un par ligne)</label>
+              <textarea id="recipe-ingredients" name="recipe-ingredients" rows="5" required></textarea>
+            </div>
+            <div class="field">
+              <label for="recipe-instructions">Étapes</label>
+              <textarea id="recipe-instructions" name="recipe-instructions" rows="5" placeholder="Décrivez rapidement la préparation."></textarea>
+            </div>
+            <div class="field">
+              <label for="recipe-calories">Calories (optionnel)</label>
+              <input type="number" id="recipe-calories" name="recipe-calories" min="0" />
+            </div>
+            <div class="field">
+              <label for="recipe-tags">Tags (séparés par des virgules)</label>
+              <input type="text" id="recipe-tags" name="recipe-tags" placeholder="végétarien, 30 min…" />
+            </div>
+            <button type="submit" class="action-button">Enregistrer</button>
+          </form>
+        </section>
+
+        <section class="panel" id="shopping-panel">
+          <div class="panel-header">
+            <h2>Liste de courses</h2>
+            <p>Générée automatiquement à partir de vos repas planifiés.</p>
+          </div>
+          <ul id="shopping-list" class="shopping-list"></ul>
+        </section>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" integrity="sha384-IsFQcYnSJy4qzM7P2UYdAHP3n+/KA5AT7JAWfLFkGT0yuIEoVa0YIydKmpuR0LWw" crossorigin="anonymous"></script>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "menu-planner",
+  "version": "1.0.0",
+  "description": "Application Node.js pour planifier des menus hebdomadaires avec interface iOS-friendly.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["menu", "planner", "recettes", "drag-and-drop"],
+  "author": "",
+  "license": "MIT"
+}
