@@ -1,8 +1,10 @@
-import type { ReactNode } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import {
   DndContext,
   type DragEndEvent,
   PointerSensor,
+  MouseSensor,
+  TouchSensor,
   useSensor,
   useSensors,
   useDraggable,
@@ -18,13 +20,30 @@ export interface PlannerDragDropProps {
 }
 
 export const PlannerDragDrop = ({ children, onDragEnd }: PlannerDragDropProps) => {
-  const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 8
-      }
-    })
-  );
+  const pointerSensor = useSensor(PointerSensor, {
+    activationConstraint: {
+      distance: 8
+    }
+  });
+  const mouseSensor = useSensor(MouseSensor, {
+    activationConstraint: {
+      distance: 8
+    }
+  });
+  const touchSensor = useSensor(TouchSensor, {
+    activationConstraint: {
+      delay: 120,
+      tolerance: 8
+    }
+  });
+
+  const sensorList = useMemo(() => {
+    const list = typeof window !== 'undefined' && 'PointerEvent' in window ? [pointerSensor] : [mouseSensor];
+    list.push(touchSensor);
+    return list;
+  }, [pointerSensor, mouseSensor, touchSensor]);
+
+  const sensors = useSensors(...sensorList);
 
   return (
     <DndContext sensors={sensors} onDragEnd={onDragEnd} autoScroll={false}>
