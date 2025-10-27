@@ -1,0 +1,52 @@
+{
+  "recipes": [
+    {
+      "id": "r1",
+      "title": "Poulet citron et herbes",
+      "description": "Poulet rôti au four avec citron, ail et herbes fraîches.",
+      "ingredients": [
+        "4 cuisses de poulet",
+        "2 citrons",
+        "3 gousses d'ail",
+        "1 c. à s. d'huile d'olive",
+        "Thym frais",
+        "Sel",
+        "Poivre"
+      ],
+      "instructions": "Préchauffer le four à 200°C. Mélanger l'huile, le jus de citron, l'ail haché et le thym. Enrober le poulet du mélange, saler, poivrer et cuire 35 minutes.",
+      "calories": 520,
+      "tags": ["volaille", "rapide"],
+      "source": "maison"
+    },
+    {
+      "id": "r2",
+      "title": "Bowl végétarien quinoa et légumes",
+      "description": "Bol complet avec quinoa, pois chiches et légumes rôtis.",
+      "ingredients": [
+        "200 g de quinoa",
+        "1 boîte de pois chiches",
+        "1 courgette",
+        "1 poivron rouge",
+        "1 carotte",
+        "2 c. à s. de tahini",
+        "Jus d'un citron",
+        "Paprika fumé",
+        "Sel",
+        "Poivre"
+      ],
+      "instructions": "Cuire le quinoa. Rôtir les légumes au four 20 minutes avec huile et paprika. Mélanger le tahini et le citron pour la sauce. Assembler.",
+      "calories": 650,
+      "tags": ["végétarien", "bol"],
+      "source": "maison"
+    }
+  ],
+  "menu": {
+    "lundi": { "midi": null, "soir": "r1" },
+    "mardi": { "midi": "r2", "soir": null },
+    "mercredi": { "midi": null, "soir": null },
+    "jeudi": { "midi": null, "soir": null },
+    "vendredi": { "midi": null, "soir": null },
+    "samedi": { "midi": null, "soir": null },
+    "dimanche": { "midi": null, "soir": null }
+  }
+}
