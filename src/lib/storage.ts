@@ -1,4 +1,4 @@
-import type { AppDB } from '@/types';
+import type { AppDB, PlannedMeal } from '@/types';
 
 const STORAGE_KEY = 'menumagique-db';
 const CURRENT_VERSION = 1;
@@ -6,7 +6,7 @@ const CURRENT_VERSION = 1;
 const createEmptyState = (): AppDB => ({
   version: CURRENT_VERSION,
   recipes: [],
-  planner: [],
+  planner: {},
   shoppingList: [],
   preferences: {
     onboardingCompleted: false,
@@ -15,14 +15,27 @@ const createEmptyState = (): AppDB => ({
   }
 });
 
+const normalizePlanner = (planner: AppDB['planner'] | PlannedMeal[]): AppDB['planner'] => {
+  if (Array.isArray(planner)) {
+    return planner.reduce<Record<string, PlannedMeal>>((acc, meal) => {
+      acc[meal.id] = meal;
+      return acc;
+    }, {});
+  }
+  return planner ?? {};
+};
+
 const migrate = (data: AppDB): AppDB => {
+  const planner = normalizePlanner(data.planner as AppDB['planner'] | PlannedMeal[]);
+
   switch (data.version) {
     case 1:
-      return data;
+      return { ...data, planner };
     default:
       return {
         ...createEmptyState(),
         ...data,
+        planner,
         version: CURRENT_VERSION
       };
   }

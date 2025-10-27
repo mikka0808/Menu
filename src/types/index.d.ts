@@ -34,9 +34,9 @@ export interface Recipe {
   updatedAt?: string;
 }
 
-export type DayId = `${number}-${number}-${number}`;
+export type DayId = 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'sun';
 
-export type MealSlot = 'breakfast' | 'lunch' | 'dinner' | 'snack' | 'dessert';
+export type MealSlot = 'lunch' | 'dinner';
 
 export interface PlannedMeal {
   id: string;
@@ -65,7 +65,7 @@ export interface AppPreferences {
 export interface AppDB {
   version: number;
   recipes: Recipe[];
-  planner: PlannedMeal[];
+  planner: Record<string, PlannedMeal>;
   shoppingList: ShoppingItem[];
   preferences: AppPreferences;
 }
